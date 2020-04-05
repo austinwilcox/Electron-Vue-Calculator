@@ -273,12 +273,16 @@ export default {
         solve()
         {
             this.operation.answer = ' = '
+            let leftSide = Number(this.operation.leftSide)
+            let rightSide = Number(this.operation.rightSide)
 
             switch(this.operation.operand){
                 case 'x': this.operation.answer += Number(this.operation.leftSide) * Number(this.operation.rightSide); break;
                 case '/': this.operation.answer += Number(this.operation.leftSide) / Number(this.operation.rightSide); break;
                 case '+': this.operation.answer += Number(this.operation.leftSide) + Number(this.operation.rightSide); break;
                 case '-': this.operation.answer += Number(this.operation.leftSide) - Number(this.operation.rightSide); break;
+                case '%': this.operation.answer += 
+                    leftSide < rightSide ? leftSide : leftSide - (Math.floor(leftSide / rightSide) * rightSide); break;
             }
             this.pastOperations.push(this.operation)
         },
